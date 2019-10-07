@@ -1,0 +1,13 @@
+Culiacan1 -> Mochis.
+Culiacan1 -> HHHHHHHHermosillo2.
+Culiacan1 - Mochis.
+HHHHHHHHermosillo2 -> Monterrey5.
+Culiacan1 => Monterrey5? // esta es una pregunta
+Guadalajara3 <- HHHHHHHHermosillo2.
+Guadalajara3 <- Guadalajara34. //Enlace
+Guadalajara34 -> Culiacan1.
+Guadalajara34 <= Culiacan1 ? #Otra pregunta
+Mexico5 <- Culiacan1. //Este es un enlace
+Guadalajara34 => HHHHHHHHermosillo2? %Tercera pregunta
+Mexico5 => HHHHHHHHermosillo2? &Una torre desconocida
+guasave => culiacan1?
