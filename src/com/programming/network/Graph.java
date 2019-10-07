@@ -8,10 +8,15 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.Stack;
 
+/**
+* Clase Grafo, implementa la busqueda de caminos
+* y utiliza una Hashtable como estructura de datos
+* para almacenar el grafo.
+*
+*/
 public final class Graph{
 
 	
@@ -28,8 +33,7 @@ public final class Graph{
 
 
     public void addEdge(Node start, Node dest) {
-        if (!graph.containsKey(start) || !graph.containsKey(dest))
-            throw new NoSuchElementException("Ambos nodos deben estar en el grafo");
+        
         graph.get(start).add(dest);
     }
 

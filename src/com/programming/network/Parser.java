@@ -8,14 +8,16 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher; 
 import java.util.regex.Pattern; 
-
+/**
+*Esta clase es un parser para el archivo de texto
+*con los enlaces, desenlaces y preguntas
+*/
 public class Parser implements Iterator<LineResult>{
 	
-	//private final String LINK_PATTERN = "([A-z])(\\w)*((\\-)|(->|<-))(\\w)*([?]|[.])(.*)";
 	private final String LINK_PATTERN = "([A-z])(\\w)*((\\-)|(->|<-))(\\w)*(.)(.*)";
-	//private final String QUESTION_PATTERN = "([A-z])(\\w)*(=>|<=)(\\w)*([?]|[.])(.*)";
+	
 	private final String QUESTION_PATTERN = "([A-z])(\\w)*(=>|<=)(\\w)*(\\?)(.*)";
-	//private final String FILE = "./data.txt";
+	
 	private final String FILE = "./data.txt";
 	
 	private int currentIndex = 0;
@@ -57,10 +59,16 @@ public class Parser implements Iterator<LineResult>{
 		String line = this.lines.get(this.currentIndex);
 		String group = null;
 		LineResult result = null;
+		int lastIndex;
 		if(Pattern.matches(LINK_PATTERN,line)) {
     		m = linkPattern.matcher(line);
     		m.find();
     		group = m.group();
+    		lastIndex = group.lastIndexOf('.');
+    		if(lastIndex == -1) {
+    			this.currentIndex++;
+    			return null;
+    		}
     		group = group.substring(0,group.lastIndexOf('.'));
     		result = this.createLineResult(group, false);
     	}else if(Pattern.matches(QUESTION_PATTERN, line)) {
@@ -92,6 +100,9 @@ public class Parser implements Iterator<LineResult>{
 		String left = line.substring(0,start);
 		String right = line.substring(end);
 		
+		if(left.length() > 15 || right.length() > 15) {
+			return null;
+		}
 		Node nodeLeft = new Node(left);
 		Node nodeRight = new Node(right);
 		

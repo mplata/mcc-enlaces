@@ -1,5 +1,8 @@
 package com.programming.network;
-
+/**
+* Clase Main, punto de entrada al programa, instancía
+* Graph y Parser para poder evaluar el archivo de entrada.
+*/
 public class Enlaces {
 	
     public static void main(String[] args) {
@@ -14,10 +17,10 @@ public class Enlaces {
         		Node from = line.getFrom();
         		Node to = line.getTo();
         		graph.removeEdge(from, to);
-        		System.out.println("Removiendo enlace "+from+" - "+to);
+        		/*System.out.println("Removiendo enlace "+from+" - "+to);
         		System.out.println("------------");
             	System.out.println(graph);
-            	System.out.println("------------");
+            	System.out.println("------------");*/
         	}
         	else if(line != null && line.isLink()) {
         		Node from = line.getFrom();
@@ -25,14 +28,14 @@ public class Enlaces {
         		graph.addNode(from);
         		graph.addNode(to);
         		graph.addEdge(from, to);
-        		System.out.println("Agregando enlace "+from+" - "+to);
+        		/*System.out.println("Agregando enlace "+from+" - "+to);
         		System.out.println("------------");
             	System.out.println(graph);
-            	System.out.println("------------");
+            	System.out.println("------------");*/
         	}else if(line != null) {
         		Node from = line.getFrom();
         		Node to = line.getTo();
-        		System.out.println("Pregunta: ¿"+from+" va a "+to+"?");
+        		//System.out.println("Pregunta: ¿"+from+" va a "+to+"?");
         		graph.findPath(from , to);
         	}
         }
