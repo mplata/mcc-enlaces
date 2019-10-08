@@ -1,5 +1,7 @@
 package com.programming.network;
-
+/**
+* Clase Nodo
+*/
 public class Node {
 	
 	private String label;

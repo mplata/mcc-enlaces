@@ -14,10 +14,13 @@ import java.util.regex.Pattern;
 */
 public class Parser implements Iterator<LineResult>{
 	
+	//Patron para saber si es un enlace
 	private final String LINK_PATTERN = "([A-z])(\\w)*((\\-)|(->|<-))(\\w)*(.)(.*)";
 	
+	//Patron para saber si es una pregunta
 	private final String QUESTION_PATTERN = "([A-z])(\\w)*(=>|<=)(\\w)*(\\?)(.*)";
 	
+	//Ruta del archivo a leer
 	private final String FILE = "./data.txt";
 	
 	private int currentIndex = 0;
@@ -78,12 +81,16 @@ public class Parser implements Iterator<LineResult>{
 			group = group.substring(0,group.lastIndexOf('?'));
     		result = this.createLineResult(group, true);
     	}else {
-    		System.out.println("invalid line "+line);
+    		//Se comenta para evitar salidas erroneas
+    		//System.out.println("invalid line "+line);
     	}
 		this.currentIndex++;
 		return result;
 	}
-	
+	/*
+	 * Obtener una linea de texto y convertirla
+	 * en algo util para el grafo (Objeto LineResult)
+	 * */
 	private LineResult createLineResult(String line, boolean isQuestion) {
 		
 		LineResult result = new LineResult();
