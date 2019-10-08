@@ -20,19 +20,17 @@ public class Parser implements Iterator<LineResult>{
 	//Patron para saber si es una pregunta
 	private final String QUESTION_PATTERN = "([A-z])(\\w)*(=>|<=)(\\w)*(\\?)(.*)";
 	
-	//Ruta del archivo a leer
-	private final String FILE = "./data.txt";
 	
 	private int currentIndex = 0;
 	private List<String> lines;
 	private Pattern linkPattern;
 	private Pattern questionPattern;
 	
-	Parser(){
+	Parser(String file){
 		
 		Scanner sc = null;
 		try {
-			sc = new Scanner(new File(FILE));
+			sc = new Scanner(new File(file));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -41,7 +39,7 @@ public class Parser implements Iterator<LineResult>{
 		while(sc.hasNextLine()) {
 			line = sc.nextLine();
 			line = line.replaceAll("\\s+","");
-			line = line.toLowerCase();
+			//line = line.toLowerCase();
 			this.lines.add(line);
 		}
 		sc.close();

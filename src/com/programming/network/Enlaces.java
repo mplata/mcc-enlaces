@@ -5,11 +5,14 @@ package com.programming.network;
 */
 public class Enlaces {
 	
+	//Ruta del archivo a leer
+	private static final String FILE = "./test.txt";
+	
     public static void main(String[] args) {
     	
         Graph graph = new Graph();
         
-        Parser p = new Parser();
+        Parser p = new Parser(FILE);
         LineResult line = null;
         while(p.hasNext()) {
         	line = p.next();

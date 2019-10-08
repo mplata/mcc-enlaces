@@ -4,12 +4,12 @@ package com.programming.network;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
+import java.util.TreeMap;
 
 /**
 * Clase Grafo, implementa la busqueda de caminos
@@ -20,7 +20,7 @@ import java.util.Stack;
 public final class Graph{
 
 	
-    private Hashtable<Node, Set<Node>> graph = new Hashtable<Node, Set<Node>>();
+    private TreeMap<Node, Set<Node>> graph = new TreeMap<Node, Set<Node>>();
 
 
     public boolean addNode(Node node) {
@@ -33,7 +33,7 @@ public final class Graph{
 
 
     public void addEdge(Node start, Node dest) {
-        
+        //System.out.println(this.graph+" - "+start);
         graph.get(start).add(dest);
     }
 

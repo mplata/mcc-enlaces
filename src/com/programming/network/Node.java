@@ -2,7 +2,7 @@ package com.programming.network;
 /**
 * Clase Nodo
 */
-public class Node {
+public class Node implements Comparable<Node>{
 	
 	private String label;
 	
@@ -47,6 +47,12 @@ public class Node {
 			}
 		}
 		return true;
+	}
+	
+	@Override
+	public int compareTo(Node o) {
+		int res = this.label.compareToIgnoreCase(o.getLabel());
+		return res;
 	}
 	
 	
