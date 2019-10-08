@@ -19,10 +19,12 @@ import java.util.TreeMap;
 */
 public final class Graph{
 
-	
+	//Se utiliza un TreeMap para evitar repetir keys y para
+	//que al insertar elementos con el mismo nombre pero con mayusculas o 
+	//minusculas
     private TreeMap<Node, Set<Node>> graph = new TreeMap<Node, Set<Node>>();
 
-
+    //Regresar falso si el nodo ya esta en el grafo
     public boolean addNode(Node node) {
     	if (graph.containsKey(node)) {
     		return false;
@@ -31,7 +33,7 @@ public final class Graph{
         return true;
     }
 
-
+    //Obtener el Set del key correspondiente y agregarle la arista
     public void addEdge(Node start, Node dest) {
         //System.out.println(this.graph+" - "+start);
         graph.get(start).add(dest);
@@ -52,7 +54,8 @@ public final class Graph{
 
         return graph.get(start).contains(end);
     }
-
+    
+    //Obtener las aristas del Nodo
     public Set<Node> edgesFrom(Node node) {
         Set<Node> arcs = graph.get(node);
         if (arcs == null)
@@ -61,16 +64,23 @@ public final class Graph{
         return Collections.unmodifiableSet(arcs);
     }
     
+    /**
+     * Metodo recursivo, se manda el nodo visitado, el nodo buscado,
+     * la lista de nodos que se han visitado y el stack
+     */
     private boolean findPath(Node node,Node wanted, List<Node> visited, Stack<Node> path) 
     { 
     	boolean found= false;
         visited.add(node);
-        
+        //Si el nodo visitado es el nodo buscado, se retorna true y regresa
         if(node.equals(wanted)) {
         	path.push(node);
         	return true;
         }
         Set<Node> edges = edgesFrom(node);
+        //Si el nodo visitado no es el buscado y no hay mas camino,
+        //se retorna falso y regresa
+        //Si sí hay camino, se manda llamar findPath, en los nodos adyacentes
         if(edges == null || edges.size() == 0 ) {
         	return false;
         }else {
@@ -80,6 +90,9 @@ public final class Graph{
                 Node n = edgesIt.next(); 
                 if (!visited.contains(n)) {
                 	found = findPath(n, wanted, visited, path);
+                	//Si el retorno es verdadero, este nodo forma parte del
+                	//camino hacia el nodo buscado, por lo que regresa
+                	//true y se agrega a la pila de camino encontrado.
                 	if(found) {
                 		path.push(node);
                 		return true;
@@ -90,12 +103,19 @@ public final class Graph{
         return found;
     } 
     
+    /**
+     * Buscar si hay un camino del nodo from al nodo to
+     */
     public void findPath(Node from, Node to){
     	
     	
+    	//La lista de nodos visitados y el stack con el camino 
+    	//correcto se modifican por referencia
     	List<Node> visited = new ArrayList<Node>();
     	Stack<Node> path = new Stack<Node>();
     	boolean isPath = this.findPath(from, to, visited, path);
+    	//Si se encuentra un camino, se procesa el path para imprimir la salida
+    	//Si no, se imprime la salida solicitada cuando no hay camino
     	if(isPath) {
     		System.out.print("+");
     		while(!path.isEmpty()) {

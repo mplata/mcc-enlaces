@@ -1,5 +1,5 @@
 Culiacan232<-Maz232.
-maz323->Nav21
+maz232->Nav21.
 Maz232->Arz123.
 maz232=>Arz123?
 Arz123->Lac123. 

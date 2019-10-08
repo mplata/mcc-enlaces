@@ -1,6 +1,6 @@
 package com.programming.network;
 
-/**
+/*
 * Clase para encapsular el resultado del parser
 * a una linea del archivo de texto. 
 */
