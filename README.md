@@ -1,6 +1,6 @@
 # mcc-enlaces
 
-## Proyecto 2TP MCC 2019
+## Proyecto 3TP MCC 2019
 
 Alumno: Luis Marcos Plata Delgado
 
